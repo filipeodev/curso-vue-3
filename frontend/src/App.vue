@@ -16,26 +16,29 @@
   
 </template>
 
-<script>
-// options api -> versão 2 do vue
+<script setup> //setup é para composition api
 
+// composition api -> novidade do vue 3 ==--------------------------------------
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
+import {ref} from 'vue';
+// export default { //posso comentar se tiver setup na tag script
+  // components:{Header,Footer}, //posso comentar se tiver setup na tag script
+  // setup(){ //posso comentar se tiver setup na tag script
+    //para ter reatividade (dados reativos) usa-se ref ou reactive (ref para dados primitivos)
+    const count = ref(0);
 
-export default {
-  components:{Header,Footer},
-    // tudo  ue está dentro do data é reativo (chamado reatividade)
-  data() {
-    return {
-      count:0
+    function add(){
+      count.value++;
     }
-  },
-  methods: {
-    add(){
-      this.count++
-    }
-  }
-}
+
+    // return { //posso comentar se tiver setup na tag script
+    //   count, add
+    // }
+  // } //posso comentar se tiver setup na tag script
+// } //posso comentar se tiver setup na tag script
+
+
 </script>
 
 <style scoped>
