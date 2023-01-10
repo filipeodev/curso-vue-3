@@ -1,43 +1,35 @@
 <template>
-  <Header />
 
-  <br/>
+  <div v-if="showHeader">
+    <Header />
+  </div>
+
+  <button v-on:click="showHeader =! showHeader">Toogle Header</button>
+
+  <h2>App</h2>
   
-  <!-- <button v-on:click="add()">Add {{ count }}</button> -->
-  <button v-on:click="add">Add {{ count }}</button>
+  <router-link to="/">Home</router-link>
+  <router-link to="/about">Avout</router-link>
 
-  <br/>
-
-  <h2 id="my-app">App</h2>
-
-  <br/>
-
-  <Footer />
-  
+  <router-view></router-view>
 </template>
 
 <script>
-// options api -> versão 2 do vue
-
 import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
 
 export default {
-  components:{Header,Footer},
-    // tudo  ue está dentro do data é reativo (chamado reatividade)
-  data() {
-    return {
-      count:0
+  components: {Header},
+  data(){
+    return{
+      count:0,
+      showHeader:false
     }
   },
-  methods: {
-    add(){
-      this.count++
-    }
+  mounted(){
+    console.log('mounted');
+  },
+  updated(){
+    console.log('updated');
   }
 }
 </script>
-
-<style scoped>
-@import "@/assets/app.css";
-</style>
