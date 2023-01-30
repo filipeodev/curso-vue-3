@@ -4,7 +4,7 @@
     <Header />
   </div>
 
-  <button v-on:click="showHeader =! showHeader">Toogle Header</button>
+  <button v-on:click="showHeader = !showHeader">Toogle Header</button>
 
   <h2>App</h2>
   
