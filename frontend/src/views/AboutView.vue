@@ -4,6 +4,13 @@
   </div>
 </template>
 
+<script setup>
+import {onUnmounted} from "vue";
+onUnmounted(() => {
+  console.log("Unmounted")
+})
+</script>
+
 <style>
 @media (min-width: 1024px) {
   .about {
