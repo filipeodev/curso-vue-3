@@ -1,23 +1,52 @@
 <template>
 
-  {{ count }}
+  <div>
+    {{ count }}
+    {{ userName }}
+  </div>
 
-  <button v-on:click="count++">Add</button>
+  <div>
+    <ul>
+      <li v-for="user in users">{{ user.firstName }} - {{ user.age }}</li>
+    </ul>
+  </div>
 
-  <h2 id="my-app">App</h2>
+  <div>
+    <button v-on:click="count++">Add</button>
+  </div>
 
-  <router-link to="/">Home</router-link>
-  <router-link to="/about">About</router-link>
+  <div>
+    <h2 id="my-app">App</h2>
+  </div>
+
+  <div>
+    <router-link to="/">Home</router-link>
+    <router-link to="/about">About</router-link>
+  </div>
   
 </template>
 
 <script setup>
-import {onMounted, onUpdated, ref} from "vue";
+import {onMounted, onUpdated, ref, reactive} from "vue";
 
 const count = ref(0);
+const userName = ref('Filipe');
 
+const users = ref([
+  {
+    firstName: "Filipe",
+    age: 24
+  },
+  
+  {
+    firstName: "Teste",
+    age: 25
+  }
+])
+
+let myName = ref('Alexandre')
 onMounted(() => {
-  console.log("mounted");
+  console.log(users);
 })
 
 
