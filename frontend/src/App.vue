@@ -1,60 +1,56 @@
 <template>
+  <span v-if="showName">Mostrar o nome</span>
 
-  <div>
-    {{ count }}
-    {{ userName }}
-  </div>
+  <div :class="teste">teste</div>
 
-  <div>
-    <ul>
-      <li v-for="user in users">{{ user.firstName }} - {{ user.age }}</li>
-    </ul>
-  </div>
-
-  <div>
-    <button v-on:click="count++">Add</button>
-  </div>
-
-  <div>
-    <h2 id="my-app">App</h2>
-  </div>
-
-  <div>
-    <router-link to="/">Home</router-link>
-    <router-link to="/about">About</router-link>
-  </div>
-  
+  <img :src="image" alt="teste" title="teste">
+  <ul>
+    <template v-for="(user,key) in users" :key="key">
+      <li v-if="user.is_admin === 1">
+        {{ key }} - {{ user.firstName }}
+      </li>
+    </template>
+  </ul>
 </template>
 
-<script setup>
-import {onMounted, onUpdated, ref, reactive} from "vue";
-
-const count = ref(0);
-const userName = ref('Filipe');
-
-const users = ref([
-  {
-    firstName: "Filipe",
-    age: 24
-  },
-  
-  {
-    firstName: "Teste",
-    age: 25
+<script>
+export default {
+  data(){
+    return {
+      teste:"class",
+      image:'https://picsum.photos/200/300',
+      showName:true,
+      user:{name:'Alexandre', age:40},
+      users:[
+        {
+          id:1,
+          firstName: "Alexandre",
+          age:40,
+          is_admin:1
+        },
+        {
+          id:2,
+          firstName: "Maria",
+          age:40,
+          is_admin:0
+        },
+        {
+          id:3,
+          firstName: "Joao",
+          age:40,
+          is_admin:0
+        },
+        {
+          id:3,
+          firstName: "Pedro",
+          age:40,
+          is_admin:1
+        }
+      ]
+    }
   }
-])
-
-let myName = ref('Alexandre')
-onMounted(() => {
-  console.log(users);
-})
-
-
-onUpdated(() => {
-  console.log("updated");
-})
+}
 </script>
 
 <style scoped>
-@import "@/assets/app.css";
 </style>
