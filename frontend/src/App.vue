@@ -18,7 +18,7 @@ export default {
 
   async mounted() {
     try {
-      const {data} = await http.get('http://localhost:8000/api/users');
+      const {data} = await http.get('/api/users');
       this.users = data;
     }catch(error){
       console.log(error);
