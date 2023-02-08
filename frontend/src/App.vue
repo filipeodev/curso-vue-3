@@ -1,7 +1,10 @@
 <template>
-  <template v-show="showHeader">
+  <img :src="imageSrc" alt="Imagem" class="my-default-class" :class="{'my-class':is_admin,'my-other-class':!is_admin}">
+  <hr>
+
+  <!-- <template v-show="showHeader">
     <Header />
-  </template>
+  </template> -->
   
   <!-- <template v-if="showHeader">
     <Header />
@@ -33,7 +36,9 @@ export default {
     return {
       users:[],
       showHeader:false,
-      showElseIf:true
+      showElseIf:true,
+      imageSrc:'https://picsum.photos/200/300',
+      is_admin:false
     }
   },
 
@@ -53,4 +58,11 @@ export default {
 </script>
 
 <style scoped>
+.my-class {
+  border: solid 3px red;
+}
+
+.my-other-class {
+  border: solid 3px blue;
+}
 </style>
