@@ -1,5 +1,7 @@
 <template>
   <img :src="imageSrc" alt="Imagem" class="my-default-class" :class="{'my-class':is_admin,'my-other-class':!is_admin}">
+  
+  <button @click="add('teste')">Click aqui {{ count }}</button>
   <hr>
 
   <!-- <template v-show="showHeader">
@@ -37,6 +39,7 @@ export default {
       users:[],
       showHeader:false,
       showElseIf:true,
+      count:0,
       imageSrc:'https://picsum.photos/200/300',
       is_admin:false
     }
@@ -53,6 +56,13 @@ export default {
 
   updated() {
     console.log('updated');
+  },
+
+  methods: {
+    add(teste) {
+      this.count++;
+      console.log(teste);
+    }
   }
 }
 </script>
