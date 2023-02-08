@@ -1,13 +1,13 @@
 <template>
 
   <img :src="imageSrc" alt="imagem" class="my-default-class" :class="{'my-class':is_admin, 'my-other-class':!is_admin}">
-  <button @click="add(teste)">Click aqui {{ count }}</button>
+  <button @click="add(teste)">Click aqui {{ count }}</button>  <!-- isso foi inserirdo -->
   <hr>
 
   <h2>Lista de users</h2>
 
   <ul>
-    <li v-for="user in users.users" :key="user.id">{{ user.firstName }}</li>
+    <li v-for="user in users.users" :key="user.id">{{ user.firstName }}</li> 
   </ul>
   
 </template>
@@ -19,9 +19,9 @@ import {onMounted, reactive, ref} from "vue";
 let users = reactive({users:[]});
 const  imageSrc = ref('https://picsum.photos/200/300');
 const is_admin = ref(false);
-const count = ref(0);
+const count = ref(0); //isso foi inserirdo
 
-function add(teste) {
+function add(teste) {//isso foi inserirdo
   count.value++;
   console.log(teste);
 }
