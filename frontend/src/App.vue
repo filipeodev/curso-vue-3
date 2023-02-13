@@ -1,8 +1,14 @@
 <template>
   <img :src="imageSrc" alt="Imagem" class="my-default-class" :class="{'my-class':is_admin,'my-other-class':!is_admin}">
   
-  <button @click="add('teste')">Click aqui {{ count }}</button>
+  <button @click="count++">Click aqui {{ count }}</button>
   <hr>
+  {{ userName }}
+  <hr>
+  <!-- <input type="text" @keyup="add" placeholder="Qualquer coisa"> -->
+  <!-- <input type="text" @keyup="(event) => {this.count += Number(event.target.value)}" placeholder="Qualquer coisa"> -->
+  <!-- <input type="text" @keyup="myName" placeholder="Qualquer coisa"> -->
+  <input type="text" v-model="userName" placeholder="Qualquer coisa">
 
   <!-- <template v-show="showHeader">
     <Header />
@@ -40,6 +46,7 @@ export default {
       showHeader:false,
       showElseIf:true,
       count:0,
+      userName: "",
       imageSrc:'https://picsum.photos/200/300',
       is_admin:false
     }
@@ -59,9 +66,13 @@ export default {
   },
 
   methods: {
-    add(teste) {
-      this.count++;
-      console.log(teste);
+    add(event) {
+      this.count += Number(event.target.value);
+      console.log(event.target.value);
+      event.target.value = "";
+    },
+    myName(event){
+      this.userName = event.target.value;
     }
   }
 }
