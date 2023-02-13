@@ -5,6 +5,19 @@
   <hr>
   {{ userName }}
   <hr>
+  <!-- <form action="http://google.com.br" @submit.prevent="search"> -->
+  <form action="http://google.com.br">
+    <input type="text" placeholder="Buscar">
+    <!-- <button type="submit">Buscar</button> -->
+    <button @click.submit.prevent="search">Buscar</button>
+  </form>
+
+  <a href="http://google.com.br" @click.prevent="search">ir para o google</a>
+  <br>
+  {{ age }}
+  <br>
+  <button @click.prevent.once="age++">Mudar idade</button>
+  <hr>
   <!-- <input type="text" @keyup="add" placeholder="Qualquer coisa"> -->
   <!-- <input type="text" @keyup="(event) => {this.count += Number(event.target.value)}" placeholder="Qualquer coisa"> -->
   <!-- <input type="text" @keyup="myName" placeholder="Qualquer coisa"> -->
@@ -46,6 +59,7 @@ export default {
       showHeader:false,
       showElseIf:true,
       count:0,
+      age:40,
       userName: "",
       imageSrc:'https://picsum.photos/200/300',
       is_admin:false
@@ -73,6 +87,9 @@ export default {
     },
     myName(event){
       this.userName = event.target.value;
+    },
+    search(event){
+      console.log('buscou');
     }
   }
 }
