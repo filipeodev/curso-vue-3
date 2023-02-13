@@ -3,6 +3,10 @@
   <img :src="imageSrc" alt="imagem" class="my-default-class" :class="{'my-class':is_admin, 'my-other-class':!is_admin}">
   <button @click="add(teste)">Click aqui {{ count }}</button>  <!-- isso foi inserirdo -->
   <hr>
+  <!-- <input type="text" @keyup="changeName" placeholder="Name"> -->
+  <input type="text" v-model="userName" placeholder="Name">
+  {{ userName }}
+  <hr>
 
   <h2>Lista de users</h2>
 
@@ -20,10 +24,15 @@ let users = reactive({users:[]});
 const  imageSrc = ref('https://picsum.photos/200/300');
 const is_admin = ref(false);
 const count = ref(0); //isso foi inserirdo
+const userName = ref("");
 
 function add(teste) {//isso foi inserirdo
   count.value++;
   console.log(teste);
+}
+
+function changeName(event){
+  userName.value = event.target.value;
 }
 
 onMounted(async () => {
